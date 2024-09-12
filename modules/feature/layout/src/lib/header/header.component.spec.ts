@@ -8,6 +8,8 @@ import { HeaderComponent } from './header.component';
 // Ajuda a criar componentes mais coesos (qualidade de código)
 // Confiança para alterar ou refatorar o código
 
+const mockTitle = 'Ecommerce';
+
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
@@ -19,6 +21,7 @@ describe('HeaderComponent', () => {
 
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
+    component.title = mockTitle;
     fixture.detectChanges();
   });
 
@@ -29,6 +32,10 @@ describe('HeaderComponent', () => {
   it('should contain title', () => {
     const header: HTMLHeadingElement =
       fixture.nativeElement.querySelector('header');
+    expect(header.textContent).toBe(mockTitle);
+
+    component.title = 'Ecommerce';
+    fixture.detectChanges();
     expect(header.textContent).toBe('Ecommerce');
   });
 });
