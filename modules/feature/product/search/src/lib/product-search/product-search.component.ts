@@ -37,7 +37,7 @@ export class ProductSearchComponent implements OnInit {
     this.products$ = this.control.valueChanges.pipe(
       debounceTime(500),
       distinctUntilChanged(),
-      filter((text) => text.length > 2),
+      filter((text) => text.length > 0),
       switchMap((text) => this.productSearchService.searchByName(text))
     );
   }
