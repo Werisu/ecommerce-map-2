@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { HeaderComponent } from './header.component';
 
 // Mentoria Angular Pro
@@ -16,6 +17,7 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       declarations: [HeaderComponent],
     }).compileComponents();
 
@@ -37,5 +39,10 @@ describe('HeaderComponent', () => {
     component.title = 'Ecommerce';
     fixture.detectChanges();
     expect(header.textContent).toBe('Ecommerce');
+  });
+
+  it('should redirect to "/" when title is is clicked', () => {
+    const anchor: HTMLAnchorElement = fixture.nativeElement.querySelector('a');
+    expect(anchor.getAttribute('href')).toBe('/');
   });
 });
