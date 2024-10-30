@@ -45,6 +45,9 @@
           "codeCoverage": true
         }
       }
+    },
+    "e2e-ci--**/*": {
+      "dependsOn": ["^ecommerce-map-2:build"]
     }
   },
   "plugins": [
@@ -79,5 +82,6 @@
       "style": "css"
     }
   },
-  "defaultProject": "ecommerce-map-2"
+  "defaultProject": "ecommerce-map-2",
+  "useLegacyCache": true
 }
